@@ -5,7 +5,6 @@ type IUserProps = {
     user:IUser
     choose:(user:IUser) => void;
 }
-
 const User :FC<IUserProps> = ({user , choose}) => {
     return (
     <div>
