@@ -1,24 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {FC, useState} from 'react';
 import './App.css';
+import Users from "./users/users";
+import {IUser} from "./model/usersModel";
 
-function App() {
+const App:FC=() => {
+    const [user, setUser] = useState<IUser|null>(null)
+    const choose=(user:IUser)=>{
+        setUser(user)
+    }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+        {user ? (
+            <div className="user-card">
+                <h3>Інформація про користувача:</h3>
+                <p>ID: {user.id}</p>
+                <p>Ім'я: {user.name}</p>
+                <p>Логін: {user.username}</p>
+                <p>Імейл: {user.email}</p>
+
+            </div>
+        ) : (
+            <p>Будь ласка, оберіть користувача зі списку</p>
+        )}
+
+        <hr></hr>
+    <Users choose={choose} />
     </div>
 
   );
