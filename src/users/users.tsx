@@ -8,6 +8,7 @@ type IChooseProps = {
 const Users:FC<IChooseProps> = ({choose}) => {
     const [users, setUsers] = useState<IUser[]>([])
 
+
     useEffect(() => {
         fetch("https://jsonplaceholder.typicode.com/users")
             .then(res => res.json())
